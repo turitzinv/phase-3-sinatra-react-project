@@ -26,6 +26,25 @@ class ApplicationController < Sinatra::Base
     book = Book.new(params[:book])
     book.to_json
   end
+
+  delete '/books' do
+    book = Book.find(params[:id])
+    book.destroy
+    book.to_json
+  end
+
+  patch'/books/:id' do
+    book = Book.find(params[:id])
+    book.update(
+      title: params[:title],
+      author: params[:author],
+      genre: params[:genre],
+      year: params[:year],
+      read: params[:read]
+      library_id: params[:library_id]
+    )
+    book.to_json
+  end
   
 
 end
