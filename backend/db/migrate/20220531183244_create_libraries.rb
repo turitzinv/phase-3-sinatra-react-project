@@ -4,5 +4,6 @@ class CreateLibraries < ActiveRecord::Migration[6.1]
       t.string :genre
       t.integer :quantity
       t.timestamps
+    end
   end
 end
