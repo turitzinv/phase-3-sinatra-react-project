@@ -1,10 +1,6 @@
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
-  
-  # Add your routes here
-  #get "/" do
-  #  { message: "Good luck with your project!" }.to_json
-  #end
+
 
   #Select drop down to see all libraries? 
   #Or general page showing all libraries and books?
@@ -14,7 +10,8 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/libraries' do
-    libraries = Library.new(params[:library])
+    libraries = Library.create(params[:library])
+    libraries.to_json
   end
 
   get '/books' do
@@ -23,7 +20,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/books' do
-    book = Book.new(params[:book])
+    book = Book.create(params[:book])
     book.to_json
   end
 
@@ -40,7 +37,7 @@ class ApplicationController < Sinatra::Base
       author: params[:author],
       genre: params[:genre],
       year: params[:year],
-      read: params[:read]
+      read: params[:read],
       library_id: params[:library_id]
     )
     book.to_json
