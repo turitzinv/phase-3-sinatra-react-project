@@ -4,9 +4,10 @@ class ApplicationController < Sinatra::Base
 
   #Select drop down to see all libraries? 
   #Or general page showing all libraries and books?
+  #Delete option for Library?
   get '/libraries' do
     libraries = Library.all
-    libraries.to_json
+    libraries.to_json(include: [:books])
   end
 
   post '/libraries' do
@@ -16,7 +17,7 @@ class ApplicationController < Sinatra::Base
 
   get '/books' do
     books = Book.all
-    books.to_json
+    books.to_json(include: [:library])
   end
 
   post '/books' do
