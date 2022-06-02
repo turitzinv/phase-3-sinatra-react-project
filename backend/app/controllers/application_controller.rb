@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
 
   post '/libraries' do
     libraries = Library.create(params[:library])
-    libraries.to_json
+    libraries.to_json(include: [:books])
   end
 
   get '/books' do
@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
 
   post '/books' do
     book = Book.create(params[:book])
-    book.to_json
+    book.to_json(include: [:library])
   end
 
   delete '/books' do
