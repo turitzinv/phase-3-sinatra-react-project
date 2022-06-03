@@ -16,7 +16,9 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/libraries' do
-    libraries = Library.create(params[:library])
+    libraries = Library.create(
+      genre: params[:genre]
+    )
     libraries.to_json(include: [:books])
   end
 
@@ -31,7 +33,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/books' do
-    book = Book.create(params[:book])
+    book = Book.create(
+      title: params[:title],
+      author: params[:author],
+      year: params[:year],
+      read: params[:read],
+      library: params[:genre] #This worked the submit but LibraryList won't open
+    )
     book.to_json(include: [:library])
   end
 
