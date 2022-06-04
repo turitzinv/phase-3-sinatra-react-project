@@ -48,18 +48,12 @@ class ApplicationController < Sinatra::Base
     book.to_json
   end
   
-#Below patch is not complete/tested
   patch'/books/:id' do
     book = Book.find(params[:id])
     book.update(
-      title: params[:title],
-      author: params[:author],
-      genre: params[:genre],
-      year: params[:year],
-      read: params[:read],
-      library_id: params[:library_id]
+      read: params[:read]
     )
-    book.to_json
+    book.to_json(include: [:library])
   end
   
 
