@@ -4,7 +4,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :author
       t.integer :year
-      t.string :read
+      t.boolean :read
       t.integer :library_id
       t.timestamps
     end

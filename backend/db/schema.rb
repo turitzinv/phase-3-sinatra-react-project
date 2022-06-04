@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_05_31_184053) do
     t.string "title"
     t.string "author"
     t.integer "year"
-    t.string "read"
+    t.boolean "read"
     t.integer "library_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,10 +1,9 @@
+require 'pry'
+
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
 
 
-  #Select drop down to see all libraries? 
-  #Or general page showing all libraries and books?
-  #Delete option for Library?
   get '/libraries' do
     libraries = Library.all
     libraries.to_json(include: [:books])
@@ -38,7 +37,7 @@ class ApplicationController < Sinatra::Base
       author: params[:author],
       year: params[:year],
       read: params[:read],
-      library: params[:genre] #This worked the submit but LibraryList won't open
+      genre: params[:library][:genre]
     )
     book.to_json(include: [:library])
   end
@@ -48,7 +47,8 @@ class ApplicationController < Sinatra::Base
     book.destroy
     book.to_json
   end
-
+  
+#Below patch is not complete/tested
   patch'/books/:id' do
     book = Book.find(params[:id])
     book.update(
