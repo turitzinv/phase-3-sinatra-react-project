@@ -32,12 +32,12 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/books' do
-    book = Book.create(
+    library = Library.find_or_create_by(genre: params[:library])
+    book = library.books.create(
       title: params[:title],
       author: params[:author],
       year: params[:year],
-      read: params[:read],
-      genre: params[:library][:genre]
+      read: params[:read]
     )
     book.to_json(include: [:library])
   end
