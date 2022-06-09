@@ -1,7 +1,5 @@
 puts "🌱 Seeding Libraries and Books..."
 
-# Seed your database here
-
 Library.create(genre: "Comic Books")
 Library.create(genre: "Adventure")
 Library.create(genre: "How To")
