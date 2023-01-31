@@ -2,6 +2,15 @@
 
 Personal Library is an application that assists you in storing and organzing all of your books.  This is the backend portion of the application.
 
+# Running the backend (http://localhost:9292)
+
+```
+git clone git@github.com:turitzinv/phase-3-sinatra-react-project.git
+cd phase-3-sinatra-react-project
+cd backend
+bundle exec rake server
+```
+
 # application_controller
 
 Below are the available data requests:
