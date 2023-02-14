@@ -41,4 +41,6 @@ Below are the available data requests:
 
   The database is populated with sameple data from seeds.rb to demonstrate how the application will appear.
 
+# Frontend
 
+This application utilizes a React frontend, click to view: https://github.com/turitzinv/phase-3-frontend
