@@ -21,6 +21,12 @@ class ApplicationController < Sinatra::Base
     libraries.to_json(include: [:books])
   end
 
+  delete '/libraries/:id' do
+    library = Library.find(params[:id])
+    library.destroy
+    library.to_json
+  end
+
   get '/books' do
     books = Book.all
     books.to_json(include: [:library])
